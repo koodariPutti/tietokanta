@@ -1,8 +1,10 @@
 """
 @author Eetu Lindfors
 20.1.2024
+Tietokanta opinnoille
 """
 import sqlite3
+
 def luo_tietokanta():
     """
     Luo tietokannan ja taulun, jos niitä ei ole vielä olemassa.
@@ -26,6 +28,7 @@ def luo_tietokanta():
     # Tallenna muutokset ja sulje yhteys.
     conn.commit()
     conn.close()
+
 
 def lisaa_kurssi(nimi, opintopisteet, arvosana, tila, vuosi):
     """
@@ -58,6 +61,8 @@ def lisaa_kurssi(nimi, opintopisteet, arvosana, tila, vuosi):
         print(f"Kurssi '{nimi}' lisätty onnistuneesti.")
     else:
         print(f"Kurssi '{nimi}' on jo olemassa.")
+
+
 def hae_kurssit():
     """
     Hae kaikki kurssit tietokannasta ja palauta ne listana.
@@ -76,6 +81,7 @@ def hae_kurssit():
     # Sulje yhteys ja palauta kurssit lista.
     conn.close()
     return kurssit
+
 
 def poista_kurssi(kurssi_id):
     """
@@ -96,7 +102,6 @@ def poista_kurssi(kurssi_id):
     conn.close()
 
 
-
 def main():
     """
     Pääohjelma, jossa suoritetaan tietokannan ja taulun luonti,
@@ -105,16 +110,12 @@ def main():
     """
     luo_tietokanta()
 
-    lisaa_kurssi('Ohjelmointi 1', 6, 3, 'Done', 'S2021')
+    #lisaa_kurssi('Ohjelmointi 1', 6, 3, 'Done', 'S2021')
 
-    #poista_kurssi(2)
 
     kaikki_kurssit = hae_kurssit()
     for kurssi in kaikki_kurssit:
         print(kurssi)
-
-    #poista_kurssi(2)
-
 
 
 if __name__ == "__main__":
